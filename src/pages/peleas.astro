@@ -1,0 +1,660 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+	<Header />
+	
+	<main class="peleas-page">
+		<!-- Imagen de gallos peleando -->
+		<section class="hero-image">
+			<div class="image-container">
+				<img src="/gallos-peleando.jpg" alt="Gallos Peleando" class="gallos-image" />
+				<div class="hero-overlay">
+					<h1>Peleas de Gallos</h1>
+					<p>Encuentra todas las peleas programadas, en curso y finalizadas</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Filtros y búsqueda -->
+		<section class="filters-section">
+			<div class="filters-container">
+				<div class="search-box">
+					<input type="text" id="search-input" placeholder="Buscar por nombre del gallo..." />
+					<button class="search-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="11" cy="11" r="8"/>
+							<path d="m21 21-4.35-4.35"/>
+						</svg>
+					</button>
+				</div>
+
+				<div class="filter-controls">
+					<select id="peso-filter" class="filter-select">
+						<option value="">Filtrar por Peso</option>
+						<option value="3.5-4.0">3.5 - 4.0 kg</option>
+						<option value="4.0-4.5">4.0 - 4.5 kg</option>
+						<option value="4.5-5.0">4.5 - 5.0 kg</option>
+						<option value="5.0+">Más de 5.0 kg</option>
+					</select>
+
+					<select id="cuerda-filter" class="filter-select">
+						<option value="">Filtrar por Cuerda</option>
+						<option value="los-invencibles">Los Invencibles</option>
+						<option value="aguilas-doradas">Águilas Doradas</option>
+						<option value="relampagos">Relámpagos</option>
+						<option value="fuego-del-sur">Fuego del Sur</option>
+						<option value="guerreros-del-norte">Guerreros del Norte</option>
+					</select>
+
+					<select id="raza-filter" class="filter-select">
+						<option value="">Filtrar por Raza</option>
+						<option value="asil">Asil</option>
+						<option value="shamo">Shamo</option>
+						<option value="kelso">Kelso</option>
+						<option value="hatch">Hatch</option>
+						<option value="sweater">Sweater</option>
+						<option value="roundhead">Roundhead</option>
+					</select>
+
+					<select id="edad-filter" class="filter-select">
+						<option value="">Filtrar por Edad</option>
+						<option value="1-2">1-2 años</option>
+						<option value="2-3">2-3 años</option>
+						<option value="3-4">3-4 años</option>
+						<option value="4+">Más de 4 años</option>
+					</select>
+
+					<button class="clear-filters-btn">Limpiar Filtros</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Lista de peleas -->
+		<section class="peleas-list-section">
+			<div class="peleas-container">
+				<h2>Todas las Peleas</h2>
+				
+				<div class="peleas-grid">
+					<!-- Pelea ACTIVA (destacada) -->
+					<div class="pelea-card active">
+						<div class="pelea-status">
+							<span class="status-badge en-vivo">🔴 EN VIVO</span>
+							<span class="pelea-number">#001</span>
+						</div>
+						<div class="pelea-info">
+							<div class="gallos-enfrentamiento">
+								<div class="gallo">
+									<h3>El Campeón</h3>
+									<p class="cuerda">Los Invencibles</p>
+									<div class="gallo-details">
+										<span class="peso">4.2 kg</span>
+										<span class="raza">Asil</span>
+										<span class="edad">3 años</span>
+									</div>
+								</div>
+								<div class="vs">VS</div>
+								<div class="gallo">
+									<h3>Rayo de Fuego</h3>
+									<p class="cuerda">Águilas Doradas</p>
+									<div class="gallo-details">
+										<span class="peso">4.0 kg</span>
+										<span class="raza">Kelso</span>
+										<span class="edad">2 años</span>
+									</div>
+								</div>
+							</div>
+							<div class="pelea-meta">
+								<p class="fecha">📅 Hoy - 22 de Agosto, 2025</p>
+								<p class="hora">⏰ 3:00 PM (En curso)</p>
+								<p class="round">🥊 Round 2 de 5</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Peleas próximas -->
+					<div class="pelea-card programada">
+						<div class="pelea-status">
+							<span class="status-badge programada">⏳ PROGRAMADA</span>
+							<span class="pelea-number">#002</span>
+						</div>
+						<div class="pelea-info">
+							<div class="gallos-enfrentamiento">
+								<div class="gallo">
+									<h3>Tormenta Negra</h3>
+									<p class="cuerda">Relámpagos</p>
+									<div class="gallo-details">
+										<span class="peso">4.3 kg</span>
+										<span class="raza">Shamo</span>
+										<span class="edad">4 años</span>
+									</div>
+								</div>
+								<div class="vs">VS</div>
+								<div class="gallo">
+									<h3>Águila Real</h3>
+									<p class="cuerda">Águilas Doradas</p>
+									<div class="gallo-details">
+										<span class="peso">4.1 kg</span>
+										<span class="raza">Hatch</span>
+										<span class="edad">3 años</span>
+									</div>
+								</div>
+							</div>
+							<div class="pelea-meta">
+								<p class="fecha">📅 26 de Agosto, 2025</p>
+								<p class="hora">⏰ 4:30 PM</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="pelea-card programada">
+						<div class="pelea-status">
+							<span class="status-badge programada">⏳ PROGRAMADA</span>
+							<span class="pelea-number">#003</span>
+						</div>
+						<div class="pelea-info">
+							<div class="gallos-enfrentamiento">
+								<div class="gallo">
+									<h3>León Dorado</h3>
+									<p class="cuerda">Fuego del Sur</p>
+									<div class="gallo-details">
+										<span class="peso">4.5 kg</span>
+										<span class="raza">Sweater</span>
+										<span class="edad">2 años</span>
+									</div>
+								</div>
+								<div class="vs">VS</div>
+								<div class="gallo">
+									<h3>Huracán</h3>
+									<p class="cuerda">Guerreros del Norte</p>
+									<div class="gallo-details">
+										<span class="peso">4.4 kg</span>
+										<span class="raza">Roundhead</span>
+										<span class="edad">3 años</span>
+									</div>
+								</div>
+							</div>
+							<div class="pelea-meta">
+								<p class="fecha">📅 27 de Agosto, 2025</p>
+								<p class="hora">⏰ 2:15 PM</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Peleas pasadas -->
+					<div class="pelea-card finalizada">
+						<div class="pelea-status">
+							<span class="status-badge finalizada">✅ FINALIZADA</span>
+							<span class="pelea-number">#000</span>
+						</div>
+						<div class="pelea-info">
+							<div class="gallos-enfrentamiento">
+								<div class="gallo winner">
+									<h3>Relampago Azul 🏆</h3>
+									<p class="cuerda">Los Invencibles</p>
+									<div class="gallo-details">
+										<span class="peso">4.0 kg</span>
+										<span class="raza">Asil</span>
+										<span class="edad">3 años</span>
+									</div>
+								</div>
+								<div class="vs">VS</div>
+								<div class="gallo loser">
+									<h3>Viento del Norte</h3>
+									<p class="cuerda">Relámpagos</p>
+									<div class="gallo-details">
+										<span class="peso">3.9 kg</span>
+										<span class="raza">Kelso</span>
+										<span class="edad">2 años</span>
+									</div>
+								</div>
+							</div>
+							<div class="pelea-meta">
+								<p class="fecha">📅 20 de Agosto, 2025</p>
+								<p class="hora">⏰ 5:00 PM</p>
+								<p class="resultado">🏆 Ganador: Relampago Azul (Round 3)</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="pelea-card finalizada">
+						<div class="pelea-status">
+							<span class="status-badge finalizada">✅ FINALIZADA</span>
+							<span class="pelea-number">#-001</span>
+						</div>
+						<div class="pelea-info">
+							<div class="gallos-enfrentamiento">
+								<div class="gallo winner">
+									<h3>Fenix de Oro 🏆</h3>
+									<p class="cuerda">Águilas Doradas</p>
+									<div class="gallo-details">
+										<span class="peso">4.3 kg</span>
+										<span class="raza">Hatch</span>
+										<span class="edad">4 años</span>
+									</div>
+								</div>
+								<div class="vs">VS</div>
+								<div class="gallo loser">
+									<h3>Titan Negro</h3>
+									<p class="cuerda">Fuego del Sur</p>
+									<div class="gallo-details">
+										<span class="peso">4.2 kg</span>
+										<span class="raza">Shamo</span>
+										<span class="edad">3 años</span>
+									</div>
+								</div>
+							</div>
+							<div class="pelea-meta">
+								<p class="fecha">📅 18 de Agosto, 2025</p>
+								<p class="hora">⏰ 3:30 PM</p>
+								<p class="resultado">🏆 Ganador: Fenix de Oro (Round 4)</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+	<Footer />
+</Layout>
+
+<style>
+	.peleas-page {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Hero Image Section */
+	.hero-image {
+		position: relative;
+		height: 400px;
+		overflow: hidden;
+	}
+
+	.image-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	.gallos-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		/* Usando la imagen SVG de gallos peleando */
+		content: url('/gallos-peleando.svg');
+	}
+
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.6);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		text-align: center;
+	}
+
+	.hero-overlay h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+		color: #ffd700;
+	}
+
+	.hero-overlay p {
+		font-size: 1.2rem;
+		margin: 0;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	}
+
+	/* Filters Section */
+	.filters-section {
+		background: white;
+		padding: 2rem;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.filters-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.search-box {
+		display: flex;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	#search-input {
+		flex: 1;
+		padding: 1rem;
+		border: 2px solid #e1e5e9;
+		border-right: none;
+		border-radius: 25px 0 0 25px;
+		font-size: 1rem;
+		outline: none;
+		transition: border-color 0.3s ease;
+	}
+
+	#search-input:focus {
+		border-color: #007bff;
+	}
+
+	.search-btn {
+		padding: 1rem 1.5rem;
+		background: #007bff;
+		color: white;
+		border: none;
+		border-radius: 0 25px 25px 0;
+		cursor: pointer;
+		transition: background 0.3s ease;
+	}
+
+	.search-btn:hover {
+		background: #0056b3;
+	}
+
+	.search-btn svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.filter-controls {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.filter-select {
+		padding: 0.8rem 1rem;
+		border: 2px solid #e1e5e9;
+		border-radius: 10px;
+		font-size: 0.9rem;
+		background: white;
+		cursor: pointer;
+		transition: border-color 0.3s ease;
+		min-width: 150px;
+	}
+
+	.filter-select:focus {
+		border-color: #007bff;
+		outline: none;
+	}
+
+	.clear-filters-btn {
+		padding: 0.8rem 1.5rem;
+		background: #dc3545;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+		transition: background 0.3s ease;
+		font-weight: 600;
+	}
+
+	.clear-filters-btn:hover {
+		background: #c82333;
+	}
+
+	/* Peleas List Section */
+	.peleas-list-section {
+		flex: 1;
+		padding: 3rem 2rem;
+		background: #f8f9fa;
+	}
+
+	.peleas-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.peleas-container h2 {
+		text-align: center;
+		font-size: 2rem;
+		margin-bottom: 2rem;
+		color: #2c3e50;
+	}
+
+	.peleas-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.pelea-card {
+		background: white;
+		border-radius: 15px;
+		padding: 2rem;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+		border-left: 5px solid #6c757d;
+	}
+
+	.pelea-card:hover {
+		transform: translateY(-2px);
+	}
+
+	.pelea-card.active {
+		border-left-color: #dc3545;
+		background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+		animation: pulse 2s infinite;
+	}
+
+	.pelea-card.programada {
+		border-left-color: #007bff;
+	}
+
+	.pelea-card.finalizada {
+		border-left-color: #28a745;
+		opacity: 0.9;
+	}
+
+	@keyframes pulse {
+		0% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); }
+		50% { box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4); }
+		100% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); }
+	}
+
+	.pelea-status {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.status-badge {
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+
+	.status-badge.en-vivo {
+		background: #dc3545;
+		color: white;
+		animation: blink 1.5s infinite;
+	}
+
+	.status-badge.programada {
+		background: #cce5ff;
+		color: #0066cc;
+	}
+
+	.status-badge.finalizada {
+		background: #d4edda;
+		color: #155724;
+	}
+
+	@keyframes blink {
+		0%, 50% { opacity: 1; }
+		51%, 100% { opacity: 0.7; }
+	}
+
+	.pelea-number {
+		background: #e9ecef;
+		padding: 0.3rem 0.8rem;
+		border-radius: 15px;
+		font-weight: 600;
+		color: #495057;
+	}
+
+	.gallos-enfrentamiento {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		gap: 2rem;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.gallo {
+		text-align: center;
+		padding: 1rem;
+		border-radius: 10px;
+		background: #f8f9fa;
+	}
+
+	.gallo.winner {
+		background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+		border: 2px solid #28a745;
+	}
+
+	.gallo.loser {
+		background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+		border: 2px solid #dc3545;
+	}
+
+	.gallo h3 {
+		margin: 0 0 0.5rem 0;
+		color: #2c3e50;
+		font-size: 1.2rem;
+	}
+
+	.cuerda {
+		color: #6c757d;
+		margin: 0 0 1rem 0;
+		font-style: italic;
+	}
+
+	.gallo-details {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.gallo-details span {
+		background: #e9ecef;
+		padding: 0.3rem 0.6rem;
+		border-radius: 12px;
+		font-size: 0.8rem;
+		color: #495057;
+	}
+
+	.vs {
+		font-size: 2rem;
+		font-weight: bold;
+		color: #dc3545;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	.pelea-meta {
+		background: #f8f9fa;
+		padding: 1rem;
+		border-radius: 10px;
+		text-align: center;
+	}
+
+	.pelea-meta p {
+		margin: 0.5rem 0;
+		color: #495057;
+	}
+
+	.resultado {
+		font-weight: 600;
+		color: #28a745;
+	}
+
+	@media (max-width: 768px) {
+		.hero-overlay h1 {
+			font-size: 2rem;
+		}
+
+		.filter-controls {
+			flex-direction: column;
+		}
+
+		.filter-select {
+			min-width: 100%;
+		}
+
+		.gallos-enfrentamiento {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.vs {
+			order: 1;
+			font-size: 1.5rem;
+		}
+
+		.gallo-details {
+			justify-content: center;
+		}
+	}
+</style>
+
+<script>
+	// Funcionalidad de filtros (JavaScript básico)
+	document.addEventListener('DOMContentLoaded', function() {
+		const searchInput = document.getElementById('search-input') as HTMLInputElement;
+		const pesoFilter = document.getElementById('peso-filter') as HTMLSelectElement;
+		const cuerdaFilter = document.getElementById('cuerda-filter') as HTMLSelectElement;
+		const razaFilter = document.getElementById('raza-filter') as HTMLSelectElement;
+		const edadFilter = document.getElementById('edad-filter') as HTMLSelectElement;
+		const clearButton = document.querySelector('.clear-filters-btn') as HTMLButtonElement;
+
+		// Función para limpiar filtros
+		if (clearButton) {
+			clearButton.addEventListener('click', function() {
+				if (searchInput) searchInput.value = '';
+				if (pesoFilter) pesoFilter.selectedIndex = 0;
+				if (cuerdaFilter) cuerdaFilter.selectedIndex = 0;
+				if (razaFilter) razaFilter.selectedIndex = 0;
+				if (edadFilter) edadFilter.selectedIndex = 0;
+				// Aquí se aplicarían los filtros
+				console.log('Filtros limpiados');
+			});
+		}
+
+		// Event listeners para filtros (placeholder para funcionalidad futura)
+		if (searchInput) {
+			searchInput.addEventListener('input', function() {
+				console.log('Buscando:', this.value);
+			});
+		}
+
+		[pesoFilter, cuerdaFilter, razaFilter, edadFilter].forEach(filter => {
+			if (filter) {
+				filter.addEventListener('change', function() {
+					console.log('Filtro aplicado:', this.id, (this as HTMLSelectElement).value);
+				});
+			}
+		});
+	});
+</script>

@@ -1,0 +1,183 @@
+---
+// Componente para mostrar gallos registrados y peleas coordinadas
+---
+
+<section class="gallos-peleas-section">
+    <div class="content-container">
+        <!-- Gallos Registrados -->
+        <div class="gallos-section">
+            <h2>Gallos Registrados</h2>
+            <div class="gallos-list">
+                <!-- Datos de ejemplo - esto vendrá de la base de datos -->
+                <div class="gallo-card">
+                    <div class="gallo-info">
+                        <h3>El Campeón</h3>
+                        <p>Cuerda: Los Invencibles</p>
+                        <p>Peso: 4.2 kg</p>
+                        <span class="status active">Activo</span>
+                    </div>
+                </div>
+                
+                <div class="gallo-card">
+                    <div class="gallo-info">
+                        <h3>Rayo de Fuego</h3>
+                        <p>Cuerda: Águilas Doradas</p>
+                        <p>Peso: 4.0 kg</p>
+                        <span class="status active">Activo</span>
+                    </div>
+                </div>
+
+                <div class="gallo-card">
+                    <div class="gallo-info">
+                        <h3>Tormenta Negra</h3>
+                        <p>Cuerda: Relámpagos</p>
+                        <p>Peso: 4.3 kg</p>
+                        <span class="status active">Activo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Peleas Coordinadas -->
+        <div class="peleas-section">
+            <h2>Peleas Coordinadas</h2>
+            <div class="peleas-list">
+                <!-- Datos de ejemplo -->
+                <div class="pelea-card">
+                    <div class="pelea-info">
+                        <h3>El Campeón vs Rayo de Fuego</h3>
+                        <p>Fecha: 25 de Agosto, 2025</p>
+                        <p>Hora: 3:00 PM</p>
+                        <span class="status-pelea programada">Programada</span>
+                    </div>
+                </div>
+
+                <div class="pelea-card">
+                    <div class="pelea-info">
+                        <h3>Tormenta Negra vs Águila Real</h3>
+                        <p>Fecha: 26 de Agosto, 2025</p>
+                        <p>Hora: 4:30 PM</p>
+                        <span class="status-pelea programada">Programada</span>
+                    </div>
+                </div>
+
+                <div class="pelea-card">
+                    <div class="pelea-info">
+                        <h3>León Dorado vs Huracán</h3>
+                        <p>Fecha: 27 de Agosto, 2025</p>
+                        <p>Hora: 2:15 PM</p>
+                        <span class="status-pelea confirmada">Confirmada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .gallos-peleas-section {
+        padding: 3rem 2rem;
+        background: #ffffff;
+    }
+
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .gallos-section,
+    .peleas-section {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallos-section h2,
+    .peleas-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 0.5rem;
+    }
+
+    .gallos-list,
+    .peleas-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .gallo-card,
+    .pelea-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #28a745;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .pelea-card {
+        border-left-color: #007bff;
+    }
+
+    .gallo-card:hover,
+    .pelea-card:hover {
+        transform: translateX(5px);
+    }
+
+    .gallo-info h3,
+    .pelea-info h3 {
+        margin: 0 0 0.5rem 0;
+        color: #2c3e50;
+        font-size: 1.1rem;
+    }
+
+    .gallo-info p,
+    .pelea-info p {
+        margin: 0.25rem 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    .status,
+    .status-pelea {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    .status.active {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-pelea.programada {
+        background: #cce5ff;
+        color: #0066cc;
+    }
+
+    .status-pelea.confirmada {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    @media (max-width: 768px) {
+        .content-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .gallos-peleas-section {
+            padding: 2rem 1rem;
+        }
+    }
+</style>

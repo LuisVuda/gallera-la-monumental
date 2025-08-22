@@ -1,0 +1,93 @@
+---
+// Componente para los botones principales de acciones
+---
+
+<section class="main-actions">
+    <div class="actions-container">
+        <a href="/registrar-cuerda" class="action-btn register-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="16"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+            Registrar Cuerda
+        </a>
+        
+        <a href="/peleas" class="action-btn fights-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+            </svg>
+            Ver Peleas
+        </a>
+    </div>
+</section>
+
+<style>
+    .main-actions {
+        padding: 3rem 2rem;
+        background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .actions-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        text-decoration: none;
+        justify-content: center;
+    }
+
+    .register-btn {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+    }
+
+    .register-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    }
+
+    .fights-btn {
+        background: linear-gradient(135deg, #007bff 0%, #6f42c1 100%);
+        color: white;
+    }
+
+    .fights-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .actions-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-btn {
+            min-width: 250px;
+            justify-content: center;
+        }
+    }
+</style>
