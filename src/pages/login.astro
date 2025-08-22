@@ -451,8 +451,8 @@ import Footer from '../components/Footer.astro';
                 // Simular autenticación
                 if (nombreCuerda.toLowerCase() === 'los invencibles' && contrasena === '123456') {
                     alert(`¡Bienvenido ${nombreCuerda}!`);
-                    // Redirigir al dashboard o página principal
-                    window.location.href = '/';
+                    // Redirigir al dashboard
+                    window.location.href = '/dashboard';
                 } else {
                     alert('Nombre de cuerda o contraseña incorrectos.');
                     

@@ -21,7 +21,7 @@
         <!-- Botones de navegación -->
         <div class="nav-buttons">
             <a href="/login" class="btn-login">Login</a>
-            <button class="btn-admin">Admin</button>
+            <a href="/admin-login" class="btn-admin">Admin</a>
         </div>
     </div>
 </header>
@@ -109,13 +109,17 @@
     }
 
     .btn-admin {
-        background: #dc3545;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
         color: white;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
     }
 
     .btn-admin:hover {
-        background: #c82333;
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
         transform: translateY(-2px);
+        color: white;
+        box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
     }
 
     @media (max-width: 768px) {

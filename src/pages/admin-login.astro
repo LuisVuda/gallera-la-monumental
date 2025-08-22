@@ -1,0 +1,427 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+    <Header />
+    
+    <main class="admin-login-main">
+        <div class="admin-login-container">
+            <div class="admin-login-card">
+                <div class="admin-header">
+                    <div class="admin-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10 9 9 5.16 1 9-3.45 9-9V7L12 2z"/>
+                            <path d="M12 8v8"/>
+                            <path d="M8 12h8"/>
+                        </svg>
+                    </div>
+                    <h1>Acceso de Administrador</h1>
+                    <p>Panel de control administrativo</p>
+                </div>
+
+                <form class="admin-form" id="adminForm">
+                    <div class="form-group">
+                        <label for="adminName">Nombre de Administrador</label>
+                        <input 
+                            type="text" 
+                            id="adminName" 
+                            name="adminName" 
+                            required 
+                            placeholder="Ingresa tu nombre"
+                            class="form-input"
+                            autocomplete="username"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPassword">Contraseña</label>
+                        <input 
+                            type="password" 
+                            id="adminPassword" 
+                            name="adminPassword" 
+                            required 
+                            placeholder="Ingresa tu contraseña"
+                            class="form-input"
+                            autocomplete="current-password"
+                        >
+                    </div>
+
+                    <button type="submit" class="btn-admin-login">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                            <polyline points="10,17 15,12 10,7"/>
+                            <line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                        Acceder como Admin
+                    </button>
+
+                    <div class="back-link">
+                        <a href="/">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                                <path d="m15 18-6-6 6-6"/>
+                            </svg>
+                            Volver al inicio
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .admin-login-main {
+        min-height: calc(100vh - 200px);
+        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    .admin-login-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 2rem;
+    }
+
+    .admin-login-card {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(30, 58, 138, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        animation: slideUp 0.6s ease-out;
+    }
+
+    .admin-header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .admin-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #fbbf24 0%, #f59e0b 100%);
+        opacity: 0.1;
+        z-index: 0;
+    }
+
+    .admin-header > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .admin-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+    }
+
+    .admin-icon svg {
+        width: 35px;
+        height: 35px;
+        color: #1e3a8a;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    .admin-header h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fbbf24;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .admin-header p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .admin-form {
+        padding: 3rem 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1.2rem 1.5rem;
+        border: 3px solid #e9ecef;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+        font-family: inherit;
+        font-weight: 500;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #1d4ed8;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .btn-admin-login {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        padding: 1.3rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        color: white;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+    }
+
+    .btn-admin-login:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(29, 78, 216, 0.4);
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    }
+
+    .btn-admin-login:active {
+        transform: translateY(-1px);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .back-link {
+        text-align: center;
+    }
+
+    .back-link a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #6c757d;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+    }
+
+    .back-link a:hover {
+        color: #1d4ed8;
+        background: rgba(29, 78, 216, 0.1);
+        transform: translateX(-3px);
+    }
+
+    .back-link .icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Estados de error */
+    .form-input.error {
+        border-color: #ef4444 !important;
+        background: #fef2f2 !important;
+        animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .admin-login-container {
+            padding: 0 1rem;
+        }
+
+        .admin-header {
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .admin-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .admin-form {
+            padding: 2rem 1.5rem;
+        }
+    }
+
+    /* Animación de entrada */
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Efecto de brillo para el botón */
+    .btn-admin-login {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-admin-login::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-admin-login:hover::before {
+        left: 100%;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Manejo del formulario de admin
+        const adminForm = document.getElementById('adminForm') as HTMLFormElement;
+        
+        if (adminForm) {
+            adminForm.addEventListener('submit', function(e: Event) {
+                e.preventDefault();
+                
+                // Obtener datos del formulario
+                const formData = new FormData(adminForm);
+                const adminName = formData.get('adminName') as string;
+                const adminPassword = formData.get('adminPassword') as string;
+                
+                // Validar campos
+                if (!adminName.trim() || !adminPassword.trim()) {
+                    alert('Por favor, complete todos los campos.');
+                    markFieldsAsError();
+                    return;
+                }
+                
+                // Limpiar errores previos
+                clearErrors();
+                
+                // Simular autenticación de administrador
+                // Credenciales: Luis / 123456
+                if (adminName.toLowerCase() === 'luis' && adminPassword === '123456') {
+                    
+                    // Mostrar mensaje de éxito
+                    const submitBtn = adminForm.querySelector('.btn-admin-login') as HTMLButtonElement;
+                    if (submitBtn) {
+                        submitBtn.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                            Acceso Concedido
+                        `;
+                        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                        submitBtn.style.boxShadow = '0 10px 30px rgba(16, 185, 129, 0.4)';
+                    }
+                    
+                    // Redirigir después de un breve delay
+                    setTimeout(() => {
+                        alert(`¡Bienvenido Administrador ${adminName}!`);
+                        // Redirigir al dashboard de admin
+                        window.location.href = '/admin-dashboard';
+                    }, 1000);
+                    
+                } else {
+                    // Error de autenticación
+                    alert('Credenciales de administrador incorrectas.');
+                    markFieldsAsError();
+                    
+                    // Restaurar botón después de 3 segundos
+                    setTimeout(() => {
+                        clearErrors();
+                    }, 3000);
+                }
+            });
+        }
+        
+        // Limpiar errores al escribir
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('input', (event: Event) => {
+                const target = event.target as HTMLInputElement;
+                target.classList.remove('error');
+            });
+        });
+        
+        function markFieldsAsError() {
+            const inputs = adminForm.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                (input as HTMLInputElement).classList.add('error');
+            });
+        }
+        
+        function clearErrors() {
+            const inputs = adminForm.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                (input as HTMLInputElement).classList.remove('error');
+            });
+            
+            // Restaurar botón original
+            const submitBtn = adminForm.querySelector('.btn-admin-login') as HTMLButtonElement;
+            if (submitBtn) {
+                submitBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <polyline points="10,17 15,12 10,7"/>
+                        <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    Acceder como Admin
+                `;
+                submitBtn.style.background = 'linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%)';
+                submitBtn.style.boxShadow = '0 4px 15px rgba(29, 78, 216, 0.3)';
+            }
+        }
+    });
+</script>

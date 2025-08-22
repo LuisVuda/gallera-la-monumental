@@ -1,0 +1,967 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+    <Header />
+    
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <!-- Header del Dashboard -->
+            <div class="dashboard-header">
+                <div class="profile-section">
+                    <div class="profile-photo">
+                        <img id="cuerdaPhoto" src="/favicon.svg" alt="Foto de la Cuerda" />
+                        <div class="upload-overlay" id="uploadOverlay">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                                <circle cx="12" cy="13" r="3"/>
+                            </svg>
+                            <span>Subir Foto</span>
+                        </div>
+                        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="profile-info">
+                        <h1>Los Invencibles</h1>
+                        <p>Representante: Juan Carlos Méndez</p>
+                        <p>Localidad: San José, Costa Rica</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Gallos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Activos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24</span>
+                                <span class="stat-label">Victorias</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actions-panel">
+                    <button class="btn-register-gallo" id="btnRegisterGallo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                        Registrar Gallo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lista de Gallos -->
+            <div class="gallos-section">
+                <div class="section-header">
+                    <h2>Mis Gallos Registrados</h2>
+                    <div class="filters">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="all">Todos los Estados</option>
+                            <option value="active">Activos</option>
+                            <option value="retired">Retirados</option>
+                            <option value="injured">Lesionados</option>
+                        </select>
+                        <input type="text" id="searchGallo" placeholder="Buscar gallo..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="gallos-grid" id="gallosGrid">
+                    <!-- Gallos de ejemplo -->
+                    <div class="gallo-card active">
+                        <div class="gallo-image">
+                            <div class="image-placeholder">
+                                🐓
+                            </div>
+                        </div>
+                        <div class="gallo-info">
+                            <h3>El Campeón</h3>
+                            <div class="gallo-details">
+                                <span class="detail"><strong>Peso:</strong> 4.2 kg</span>
+                                <span class="detail"><strong>Edad:</strong> 2 años</span>
+                                <span class="detail"><strong>Raza:</strong> Americano</span>
+                                <span class="detail"><strong>Color:</strong> Colorado</span>
+                            </div>
+                            <div class="gallo-stats">
+                                <div class="stat">
+                                    <span class="number">12</span>
+                                    <span class="label">Peleas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">9</span>
+                                    <span class="label">Ganadas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">75%</span>
+                                    <span class="label">Efectividad</span>
+                                </div>
+                            </div>
+                            <div class="gallo-status active">
+                                <span>Activo</span>
+                            </div>
+                        </div>
+                        <div class="gallo-actions">
+                            <button class="btn-edit" title="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                </svg>
+                            </button>
+                            <button class="btn-delete" title="Eliminar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallo-card active">
+                        <div class="gallo-image">
+                            <div class="image-placeholder">
+                                🐓
+                            </div>
+                        </div>
+                        <div class="gallo-info">
+                            <h3>Rayo de Fuego</h3>
+                            <div class="gallo-details">
+                                <span class="detail"><strong>Peso:</strong> 4.0 kg</span>
+                                <span class="detail"><strong>Edad:</strong> 3 años</span>
+                                <span class="detail"><strong>Raza:</strong> Kelso</span>
+                                <span class="detail"><strong>Color:</strong> Rojo</span>
+                            </div>
+                            <div class="gallo-stats">
+                                <div class="stat">
+                                    <span class="number">8</span>
+                                    <span class="label">Peleas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">6</span>
+                                    <span class="label">Ganadas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">75%</span>
+                                    <span class="label">Efectividad</span>
+                                </div>
+                            </div>
+                            <div class="gallo-status active">
+                                <span>Activo</span>
+                            </div>
+                        </div>
+                        <div class="gallo-actions">
+                            <button class="btn-edit" title="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                </svg>
+                            </button>
+                            <button class="btn-delete" title="Eliminar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallo-card retired">
+                        <div class="gallo-image">
+                            <div class="image-placeholder">
+                                🐓
+                            </div>
+                        </div>
+                        <div class="gallo-info">
+                            <h3>Tormenta Negra</h3>
+                            <div class="gallo-details">
+                                <span class="detail"><strong>Peso:</strong> 4.3 kg</span>
+                                <span class="detail"><strong>Edad:</strong> 5 años</span>
+                                <span class="detail"><strong>Raza:</strong> Albany</span>
+                                <span class="detail"><strong>Color:</strong> Negro</span>
+                            </div>
+                            <div class="gallo-stats">
+                                <div class="stat">
+                                    <span class="number">15</span>
+                                    <span class="label">Peleas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">12</span>
+                                    <span class="label">Ganadas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">80%</span>
+                                    <span class="label">Efectividad</span>
+                                </div>
+                            </div>
+                            <div class="gallo-status retired">
+                                <span>Retirado</span>
+                            </div>
+                        </div>
+                        <div class="gallo-actions">
+                            <button class="btn-edit" title="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                </svg>
+                            </button>
+                            <button class="btn-delete" title="Eliminar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2,2h4a2,2,0,0,1,2,2V6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para registrar gallo -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Registrar Nuevo Gallo</h2>
+                    <button class="modal-close" id="modalClose">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <form class="modal-form" id="galloForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombreGallo">Nombre del Gallo *</label>
+                            <input type="text" id="nombreGallo" name="nombreGallo" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="peso">Peso (kg) *</label>
+                            <input type="number" id="peso" name="peso" step="0.1" min="3" max="6" required class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edad">Edad (años) *</label>
+                            <input type="number" id="edad" name="edad" min="1" max="10" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="raza">Raza *</label>
+                            <select id="raza" name="raza" required class="form-select">
+                                <option value="">Seleccionar raza</option>
+                                <option value="americano">Americano</option>
+                                <option value="kelso">Kelso</option>
+                                <option value="albany">Albany</option>
+                                <option value="hatch">Hatch</option>
+                                <option value="roundhead">Roundhead</option>
+                                <option value="sweater">Sweater</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="color">Color del Plumaje *</label>
+                            <input type="text" id="color" name="color" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción/Notas</label>
+                        <textarea id="descripcion" name="descripcion" rows="3" class="form-textarea"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="btnCancel">Cancelar</button>
+                        <button type="submit" class="btn-save">Registrar Gallo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .dashboard-main {
+        min-height: calc(100vh - 200px);
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 2rem 0;
+    }
+
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .dashboard-header {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .profile-section {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex: 1;
+    }
+
+    .profile-photo {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 3px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+
+    .profile-photo:hover {
+        border-color: #667eea;
+        transform: scale(1.05);
+    }
+
+    .profile-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .upload-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 0.8rem;
+    }
+
+    .profile-photo:hover .upload-overlay {
+        opacity: 1;
+    }
+
+    .upload-overlay svg {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 0.5rem;
+    }
+
+    .profile-info h1 {
+        margin: 0 0 0.5rem 0;
+        color: #2c3e50;
+        font-size: 2rem;
+    }
+
+    .profile-info p {
+        margin: 0.2rem 0;
+        color: #6c757d;
+        font-size: 1rem;
+    }
+
+    .stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .actions-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-register-gallo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        min-width: 200px;
+        justify-content: center;
+    }
+
+    .btn-register-gallo:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .gallos-section {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .section-header h2 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.8rem;
+    }
+
+    .filters {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .filter-select,
+    .search-input {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .filter-select:focus,
+    .search-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .gallos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .gallo-card {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .gallo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallo-card.active {
+        border-color: #28a745;
+    }
+
+    .gallo-card.retired {
+        border-color: #6c757d;
+        opacity: 0.8;
+    }
+
+    .gallo-image {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .image-placeholder {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+
+    .gallo-info h3 {
+        margin: 0 0 1rem 0;
+        color: #2c3e50;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .gallo-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .detail {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .gallo-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 10px;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat .number {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .stat .label {
+        font-size: 0.7rem;
+        color: #6c757d;
+        text-transform: uppercase;
+    }
+
+    .gallo-status {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .gallo-status span {
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .gallo-status.active span {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .gallo-status.retired span {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .gallo-actions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-edit:hover {
+        background: #0056b3;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background: #c82333;
+    }
+
+    .btn-edit svg,
+    .btn-delete svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal {
+        transform: scale(1);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 2rem 1rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .modal-header h2 {
+        margin: 0;
+        color: #2c3e50;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #6c757d;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+        background: #f8f9fa;
+        color: #dc3545;
+    }
+
+    .modal-form {
+        padding: 2rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-textarea {
+        resize: vertical;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .btn-cancel,
+    .btn-save {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-cancel:hover {
+        background: #5a6268;
+    }
+
+    .btn-save {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+    }
+
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .dashboard-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-section {
+            flex-direction: column;
+        }
+
+        .stats {
+            justify-content: center;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .filters {
+            flex-direction: column;
+        }
+
+        .gallos-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Elementos del DOM
+        const photoUpload = document.getElementById('photoUpload') as HTMLInputElement;
+        const cuerdaPhoto = document.getElementById('cuerdaPhoto') as HTMLImageElement;
+        const uploadOverlay = document.getElementById('uploadOverlay');
+        const btnRegisterGallo = document.getElementById('btnRegisterGallo');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const btnCancel = document.getElementById('btnCancel');
+        const galloForm = document.getElementById('galloForm') as HTMLFormElement;
+        const searchGallo = document.getElementById('searchGallo') as HTMLInputElement;
+        const statusFilter = document.getElementById('statusFilter') as HTMLSelectElement;
+
+        // Subida de foto
+        if (uploadOverlay && photoUpload) {
+            uploadOverlay.addEventListener('click', function() {
+                photoUpload.click();
+            });
+
+            photoUpload.addEventListener('change', function(e: Event) {
+                const target = e.target as HTMLInputElement;
+                const file = target.files?.[0];
+                
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e: ProgressEvent<FileReader>) {
+                        if (e.target?.result && cuerdaPhoto) {
+                            cuerdaPhoto.src = e.target.result as string;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Modal de registro de gallo
+        if (btnRegisterGallo && modalOverlay) {
+            btnRegisterGallo.addEventListener('click', function() {
+                modalOverlay.classList.add('active');
+            });
+        }
+
+        // Cerrar modal
+        function closeModal() {
+            if (modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        }
+
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
+        }
+
+        if (btnCancel) {
+            btnCancel.addEventListener('click', closeModal);
+        }
+
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', function(e: Event) {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Formulario de registro de gallo
+        if (galloForm) {
+            galloForm.addEventListener('submit', function(e: Event) {
+                e.preventDefault();
+                
+                const formData = new FormData(galloForm);
+                const data = Object.fromEntries(formData);
+                
+                console.log('Nuevo gallo registrado:', data);
+                
+                // Aquí iría la lógica para agregar el gallo a la lista
+                alert(`¡Gallo "${data.nombreGallo}" registrado exitosamente!`);
+                
+                // Limpiar formulario y cerrar modal
+                galloForm.reset();
+                closeModal();
+                
+                // Aquí se agregaría el nuevo gallo a la grid
+                // addGalloToGrid(data);
+            });
+        }
+
+        // Filtros y búsqueda
+        function filterGallos() {
+            const searchTerm = searchGallo?.value.toLowerCase() || '';
+            const statusTerm = statusFilter?.value || 'all';
+            const galloCards = document.querySelectorAll('.gallo-card');
+
+            galloCards.forEach(card => {
+                const cardElement = card as HTMLElement;
+                const galloName = cardElement.querySelector('h3')?.textContent?.toLowerCase() || '';
+                const galloStatus = cardElement.classList.contains('active') ? 'active' : 
+                                  cardElement.classList.contains('retired') ? 'retired' : 'active';
+
+                const matchesSearch = galloName.includes(searchTerm);
+                const matchesStatus = statusTerm === 'all' || galloStatus === statusTerm;
+
+                if (matchesSearch && matchesStatus) {
+                    cardElement.style.display = 'block';
+                } else {
+                    cardElement.style.display = 'none';
+                }
+            });
+        }
+
+        if (searchGallo) {
+            searchGallo.addEventListener('input', filterGallos);
+        }
+
+        if (statusFilter) {
+            statusFilter.addEventListener('change', filterGallos);
+        }
+
+        // Botones de acciones de gallos
+        document.addEventListener('click', function(e: Event) {
+            const target = e.target as HTMLElement;
+            
+            if (target.closest('.btn-edit')) {
+                const galloCard = target.closest('.gallo-card');
+                const galloName = galloCard?.querySelector('h3')?.textContent;
+                alert(`Editar gallo: ${galloName}`);
+            }
+            
+            if (target.closest('.btn-delete')) {
+                const galloCard = target.closest('.gallo-card');
+                const galloName = galloCard?.querySelector('h3')?.textContent;
+                
+                if (confirm(`¿Estás seguro de eliminar a ${galloName}?`)) {
+                    galloCard?.remove();
+                    alert(`${galloName} ha sido eliminado.`);
+                }
+            }
+        });
+    });
+</script>
